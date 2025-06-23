@@ -1,84 +1,6 @@
 import React from 'react';
 import './privacyFormText.css';
-
-interface Applicant {
-  id: number;
-  signature: string;
-  firstName: string;
-  signedDate: string;
-  signedIp: string;
-}
-
-interface SignatureSectionProps {
-  id: number;
-  signature: string;
-  firstName: string;
-  signedDate: string;
-  signedIp: string;
-}
-
-const SignatureSection: React.FC<SignatureSectionProps> = ({ id, signature, firstName, signedDate, signedIp }) => (
-  <div className="grid-item">
-    <div className="bg-[#b6b6b6] p-2">
-      <p className="font-medium text-sm">APPLICANT/DIRECTOR/GUARANTOR {id}</p>
-    </div>
-    <div className="grid grid-cols-2 gap-4 p-4">
-      <div className="space-y-2">
-        <p className="text-sm font-medium">Signature</p>
-        <p className="text-sm font-medium">Full Name</p>
-        <p className="text-sm font-medium">Date</p>
-        <p className="text-sm font-medium">IP Address</p>
-      </div>
-      <div className="space-y-2">
-        <p className="text-sm">{signature}</p>
-        <p className="text-sm">{firstName}</p>
-        <p className="text-sm">{signedDate}</p>
-        <p className="text-sm">{signedIp}</p>
-      </div>
-    </div>
-  </div>
-);
-
-const ApplicantSignatures: React.FC = () => {
-  const applicants: Applicant[] = [
-    {
-      id: 1,
-      signature: "APPLICANT_SIGNATURE_URL",
-      firstName: "APPLICANT_FIRSTNAME", 
-      signedDate: "APPLICANT_SIGNED_DATE",
-      signedIp: "APPLICANT_SIGNED_IP"
-    },
-    {
-      id: 2,
-      signature: "APPLICANT_SIGNATURE_URL",
-      firstName: "APPLICANT_FIRSTNAME",
-      signedDate: "APPLICANT_SIGNED_DATE", 
-      signedIp: "APPLICANT_SIGNED_IP"
-    },
-    {
-      id: 3,
-      signature: "APPLICANT_SIGNATURE_URL",
-      firstName: "APPLICANT_FIRSTNAME",
-      signedDate: "APPLICANT_SIGNED_DATE",
-      signedIp: "APPLICANT_SIGNED_IP"
-    }
-  ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {applicants.map((applicant: Applicant) => (
-        <SignatureSection
-          key={applicant.id}
-          id={applicant.id}
-          signature={applicant.signature}
-          firstName={applicant.firstName}
-          signedDate={applicant.signedDate}
-          signedIp={applicant.signedIp}
-        />
-      ))}
-    </div>
-  );
-};
+import ApplicantSignatures, {Applicant} from './applicantDetails';
 
 const CreditProviders : React.FC = () => {
     const providers = [
@@ -154,16 +76,23 @@ const CreditProviders : React.FC = () => {
         </div>
 );}
 
-const privacyFormProps = {
-}
-export const PrivacyFormText = ({
-}) => {
-    return (
-        <>
-    <img src="/Asset Alley Logo_ColourScreenUse.png" width={400} height={200} style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}}/>"
-  <h1
-    style={{
-      paddingTop: "12pt",
+type PrivacyFormProps = {
+  applicant: Applicant[]; // Changed from typeof ApplicantSignatures to Applicant[]
+};
+
+export const PrivacyFormText = ({ applicant }: PrivacyFormProps) => {
+  return (
+    <>
+      <img
+        src="/Asset Alley Logo_ColourScreenUse.png"
+        width={400}
+        height={200}
+        style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
+        alt="Asset Alley Logo"
+      />
+      <h1
+        style={{
+          paddingTop: "12pt",
       paddingLeft: "1pt",
       textAlign: "center"
     }}
@@ -574,7 +503,7 @@ export const PrivacyFormText = ({
   <h2 style={{ paddingLeft: "1pt",  textAlign: "center" }}>
     APPLICANT / DIRECTOR / GUARANTOR SIGNATURE
   </h2>
-  <ApplicantSignatures/>
+  <ApplicantSignatures applicants={applicant}/>
   <p >
     <br />
   </p>
@@ -598,13 +527,6 @@ export const PrivacyFormText = ({
   >
     CONSUMER / COMMERCIAL CREDIT REPORTING SERVICES
   </p>
-  <p
-    style={{
-      paddingTop: "11pt",
-      lineHeight: "185%",
-    }}
-    className="grid grid-cols-3"
-  >
     <p>Name</p>
     <p>Website / Email Address</p>
     <p>Telephone</p>
@@ -624,7 +546,6 @@ export const PrivacyFormText = ({
     <p>Equifax</p>
     <p>www.equifax.com.au/contact</p>
     <p>N/A</p>
-  </p>
 </>
     )
 }
