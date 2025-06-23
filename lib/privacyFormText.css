@@ -1,0 +1,33 @@
+h1, h2 {
+      color: black;
+      font-size: 18pt;
+      font-weight: bold;
+      font-family: Times New Roman, serif;
+}
+
+p, li, a {
+      padding-top: 11pt;
+      padding-left: 5pt;
+      text-indent: 0pt;
+      text-align: left;
+      color: black;
+      font-size: 16pt;
+      font-family: Times New Roman, serif;
+}
+
+a {
+      color: #0000FF;
+      text-decoration: underline;
+}
+
+.p1 {
+      text-indent: 0pt;
+      line-height: 185%;
+      textAlign: "left";
+      font-family: Times New Roman, serif;
+}
+
+ul {
+      padding-left: 20pt;
+      list-style-type: disc;
+}
