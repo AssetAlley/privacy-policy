@@ -77,7 +77,7 @@ const CreditProviders : React.FC = () => {
 );}
 
 type PrivacyFormProps = {
-  applicant: Applicant[]; // Changed from typeof ApplicantSignatures to Applicant[]
+  applicant?: Applicant[]; // Changed from typeof ApplicantSignatures to Applicant[]
 };
 
 export const PrivacyFormText = ({ applicant }: PrivacyFormProps) => {
