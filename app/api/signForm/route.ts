@@ -8,6 +8,7 @@ import { PrivacyFormRequest, PrivacyFormResponse, Applicant } from '@/lib/applic
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    body.applicants[0].signedIp = request.headers.get('x-forwarded-for') || '';
     const { applicants }: PrivacyFormRequest = body;
 
     // Validation

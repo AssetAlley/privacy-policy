@@ -34,7 +34,7 @@ export default function TestPrivacyForm() {
     ];
 
     try {
-      const response = await fetch('http://localhost:3000/api/signForm', {
+      const response = await fetch('https://asset-alley-privacy.netlify.app/api/signForm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
